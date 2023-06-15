@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# a Bash script that displays To infinity and beyond indefinitely. In between each iteration of the loop, add a sleep 2
+# Function to handle the termination signal (Ctrl+C)
+function cleanup {
+    echo "Script terminated. Exiting gracefully."
+    exit 0
+}
+
+# Register the signal handler
+trap cleanup SIGINT
+
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
