@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#A bash script that kills the process 7-higherland.
+
+kill -9 7-higherland
