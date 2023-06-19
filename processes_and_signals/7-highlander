@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# a Bash script that displays: 1.To infinity and beyond indefinitely With a sleep 2 in between each iteration I am invincible!!! when receiving a SIG
+
+# Function to handle the SIGTERM signal
+function handle_sigterm {
+    echo "OK"
+    exit 0
+}
+
+# Register the signal handler for SIGTERM
+trap handle_sigterm SIGTERM
+
+# Find the process ID (PID) of the "highlander" process
+PID=$(pgrep -f "highlander")
+
+# Check if the process is running
+if [[ -n "$PID" ]]; then
+    # Terminate the process by sending the SIGTERM signal
+    kill -TERM "$PID"
+    wait "$PID" 2>/dev/null
+else
+    echo "7-highlander not running"
+fi
